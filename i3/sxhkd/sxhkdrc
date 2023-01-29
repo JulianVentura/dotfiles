@@ -1,0 +1,69 @@
+super + Escape
+    pkill -USR1 -x sxhkd
+
+#Rofi & dmenu
+
+super + d
+    rofi -show drun -show-icons -font "Noto Sans 14"
+
+super + p
+    rofi -show power-menu -modi power-menu:rofi-power-menu
+
+super + r; {r,a}
+    {ricer.sh, alchanger.sh}
+
+# Application Keybindings
+
+#Audio Keybindings
+
+#i3 Specific Keybindings
+
+#movement
+
+super+{h,j,k,l}
+    i3-msg focus {left,down,up,right}
+
+super+shift+{h,j,k,l}
+    i3-msg move {left,down,up,right}
+
+super+minus
+    i3_split v
+
+super+backslash
+    i3_split h
+
+super + f
+    i3-msg fullscreen toggle
+
+super + shift + space
+    i3-msg floating toggle
+
+super + space
+    i3-msg focus mode_toggle
+
+super + a
+    i3-msg focus parent
+
+#workspaces
+
+super + {1-9,0}
+    i3-msg workspace {1-9,10}
+
+super + shift+{1-9,0}
+    i3-msg move container to workspace number {1-9,10}
+
+super + Return
+    alacritty
+
+super + q
+    i3-msg kill
+
+super + shift + c
+    i3-msg reload
+
+super + shift + r
+    i3-msg restart
+
+super + ctrl + {h,j,k,l}
+    i3-msg resize {grow width 1 px or 1 ppt, shrink height 1 px or 1 ppt, grow height 1 px or 1 ppt, shrink width 1 px or 1 ppt}
+
