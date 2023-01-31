@@ -42,9 +42,13 @@ dependencies=(
   pavucontrol
   xdg-user-dirs
   man
+  xclip
 )
 
 sudo pacman -S --needed --noconfirm ${dependencies[@]} 
+
+#Update mirrorlist
+sudo reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
 
 log "Installing packages"
 
@@ -79,6 +83,10 @@ packages=(
 
 sudo pacman -S --needed --noconfirm ${packages[@]}
 
+#Sync time NTP
+
+sudo timedatectl set-ntp true
+
 #lightdm
 sudo systemctl enable lightdm
 
@@ -106,7 +114,7 @@ yay -S --noconfirm zsh-theme-powerlevel10k-git
 sudo pacman -S --noconfirm powerline-common awesome-terminal-fonts
 yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k
 
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $~/.oh-my-zsh/custom/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 
 log "Installing Zsh plugins"
 
@@ -203,6 +211,7 @@ ln -sf ~/dotfiles/.gitconfig ~/
 ln -sf ~/dotfiles/.gtkrc-2.0 ~/
 ln -sf ~/dotfiles/.p10k.zsh ~/
 ln -sf ~/dotfiles/.zshrc ~/
+ln -sf ~/dotfiles/gtk-3.0 ~/.config/
 ln -sf ~/dotfiles/alacritty ~/.config/
 ln -sf ~/dotfiles/i3 ~/.config/
 ln -sf ~/dotfiles/nvim ~/.config/
@@ -211,10 +220,10 @@ ln -sf ~/dotfiles/polybar ~/.config/
 ln -sf ~/dotfiles/rofi ~/.config/
 
 log "Installation finished, reboot needed."
-input -p "Reboot now?" -n 1 -r
+input "Reboot now?"
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    reboot
+    sudo reboot
 fi
 
