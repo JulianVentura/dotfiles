@@ -1,13 +1,26 @@
 #!/bin/bash
 
-echo "Updating system"
+# Auxiliary functions
+log () {
+    Green='\033[1;32m' 
+    Reset='\033[0m'
+    echo -e "${Green}$@${Reset}"
+    echo
+}
+
+input () {
+    Green=$'\e[1;32m' 
+    Reset=$'\e[0m'
+    read -p "${Green}$@ (y/n): ${Reset}" -n 1 -r
+    echo
+    echo
+}
+
+#TODO: Add mirrorlist using reflector
+log "Updating system"
 sudo pacman -Syu --noconfirm
 
-echo "Cloning repository"
-
-git clone https://github.com/JulianVentura/dotfiles.git ~/dotfiles
-
-echo "Installing dependencies"
+log "Installing dependencies"
 
 dependencies=(
   xorg-server
@@ -24,16 +37,16 @@ dependencies=(
   htop
   wget
   pulseaudio
-  pa-applet-git
   alsa-utils
   alsa-plugins
   pavucontrol
   xdg-user-dirs
+  man
 )
 
 sudo pacman -S --needed --noconfirm ${dependencies[@]} 
 
-echo "Installing packages"
+log "Installing packages"
 
 packages=(
   i3-gaps
@@ -41,7 +54,7 @@ packages=(
   lightdm-gtk-greeter
   dmenu
   rofi
-  nvim
+  neovim
   polybar
   picom
   firefox
@@ -74,41 +87,44 @@ sudo systemctl start docker.service
 sudo systemctl enable docker.service
 sudo usermod -aG docker $USER
 
-echo "Installing yay"
+log "Installing yay"
 
 cd /tmp
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
+makepkg --noconfirm --needed -si
 cd -
 
-echo "Installing Oh My Zsh (zsh)"
+log "Installing Oh My Zsh (zsh)"
 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+bash -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 
-echo "Installing Powerlevel10k (zsh)"
+
+log "Installing Powerlevel10k (zsh)"
 
 yay -S --noconfirm zsh-theme-powerlevel10k-git
 sudo pacman -S --noconfirm powerline-common awesome-terminal-fonts
 yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k
 
-echo "Installing Zsh plugins"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $~/.oh-my-zsh/custom/themes/powerlevel10k
+
+log "Installing Zsh plugins"
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
-echo "Installing nvm"
+log "Installing nvm"
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-echo "Installing pyenv"
+log "Installing pyenv"
 
 curl https://pyenv.run | bash
 
-echo "Installing poetry"
+log "Installing poetry"
 
 curl -sSL https://install.python-poetry.org | python3 -
-echo "Installing Fonts"
+log "Installing Fonts"
 
 declare -a fonts=(
   NerdFontsSymbolsOnly
@@ -124,21 +140,24 @@ if [[ ! -d "$fonts_dir" ]]; then
     mkdir -p "$fonts_dir"
 fi
 
+cd "$fonts_dir"
+
 for font in "${fonts[@]}"; do
     zip_file="${font}.zip"
     download_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/${zip_file}"
     echo "Downloading $download_url"
     wget "$download_url"
-    unzip "$zip_file" -d "$fonts_dir"
-    find . -type f ! -name '*.ttf' -delete
+    unzip "$zip_file" 
+    find . -type f ! -name '*.*tf' -delete
 done
 
-find "$fonts_dir" -name '*Windows Compatible*' -delete
+find -name '*Windows Compatible*' -delete
 
 fc-cache -fv
 
-read -p "Do you want to install bluetooth drivers?  (y/n): " -n 1 -r
-echo
+cd -
+
+input "Do you want to install bluetooth drivers?"
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -146,8 +165,7 @@ then
     sudo systemctl enable bluetooth
 fi
 
-read -p "Is this a laptop? (y/n): " -n 1 -r
-echo
+input "Is this a laptop?"
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -158,39 +176,42 @@ then
     sudo systemctl mask systemd-rfkill.socket
 fi
 
-read -p "Is this a ThinkPad? (y/n): " -n 1 -r
-echo
+input "Is this a ThinkPad?"
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     sudo pacman -S --noconfirm acpi_call
 fi
 
-read -p "Are you using an SSD? (y/n): " -n 1 -r
-echo
+input "Are you using an SSD?"
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     sudo systemctl enable fstrim.timer
 fi
 
-echo "Creating symlinks"
+log "Cloning repository"
 
-sudo ln -s ~/dotfiles/pacman.conf /etc/
-ln -s ~/dotfiles/.gitconfig ~/
-ln -s ~/dotfiles/.gtkrc-2.0 ~/
-ln -s ~/dotfiles/.p10k.zsh ~/
-ln -s ~/dotfiles/.zshrc ~/
-ln -s ~/dotfiles/alacritty ~/.config/
-ln -s ~/dotfiles/i3 ~/.config/
-ln -s ~/dotfiles/nvim ~/.config/
-ln -s ~/dotfiles/picom ~/.config/
-ln -s ~/dotfiles/polybar ~/.config/
-ln -s ~/dotfiles/rofi ~/.config/
+git clone https://github.com/JulianVentura/dotfiles.git ~/dotfiles
 
-echo "Installation finished, reboot needed."
-read -p "Reboot now? (y/n): " -n 1 -r
-echo
+log "Creating symlinks"
+
+sudo ln -sf ~/dotfiles/pacman.conf /etc/
+ln -sf ~/dotfiles/Wallpapers ~/
+ln -sf ~/dotfiles/Scripts ~/
+ln -sf ~/dotfiles/.gitconfig ~/
+ln -sf ~/dotfiles/.gtkrc-2.0 ~/
+ln -sf ~/dotfiles/.p10k.zsh ~/
+ln -sf ~/dotfiles/.zshrc ~/
+ln -sf ~/dotfiles/alacritty ~/.config/
+ln -sf ~/dotfiles/i3 ~/.config/
+ln -sf ~/dotfiles/nvim ~/.config/
+ln -sf ~/dotfiles/picom ~/.config/
+ln -sf ~/dotfiles/polybar ~/.config/
+ln -sf ~/dotfiles/rofi ~/.config/
+
+log "Installation finished, reboot needed."
+input -p "Reboot now?" -n 1 -r
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+if [ "$1" == "v" ]; then
+	i3-msg split v &> /dev/null
+else
+	i3-msg split h &> /dev/null
+fi
+
+alacritty &> /dev/null &
+disown

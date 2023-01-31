@@ -4,7 +4,7 @@ super + Escape
 #Rofi & dmenu
 
 super + d
-    rofi -show drun -show-icons -font "Noto Sans 14"
+    rofi -show drun -show-icons -font "FiraCode Nerd Font 14"
 
 super + p
     rofi -show power-menu -modi power-menu:rofi-power-menu
@@ -27,10 +27,10 @@ super+shift+{h,j,k,l}
     i3-msg move {left,down,up,right}
 
 super+minus
-    i3_split v
+    ~/Scripts/i3_split v
 
 super+backslash
-    i3_split h
+    ~/Scripts/i3_split h
 
 super + f
     i3-msg fullscreen toggle
