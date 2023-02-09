@@ -79,6 +79,7 @@ packages=(
   htop
   obsidian
   docker
+  docker-compose
 )
 
 sudo pacman -S --needed --noconfirm ${packages[@]}

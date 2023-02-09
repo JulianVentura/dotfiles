@@ -21,7 +21,7 @@ exec_always --no-startup-id xrandr --output Virtual-1 --mode 1920x1080
 exec_always --no-startup-id feh --bg-fill ~/Wallpapers/wallpaper.jpg 
 
 # Keyboard Layout
-exec_always --no-startup-id setxkbmap us
+exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option nodeadkeys
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.

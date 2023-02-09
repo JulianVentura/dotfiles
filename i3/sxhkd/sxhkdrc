@@ -27,10 +27,10 @@ super+shift+{h,j,k,l}
     i3-msg move {left,down,up,right}
 
 super+minus
-    ~/Scripts/i3_split v
+    ~/Scripts/i3-split v
 
 super+backslash
-    ~/Scripts/i3_split h
+    ~/Scripts/i3-split h
 
 super + f
     i3-msg fullscreen toggle
@@ -53,7 +53,7 @@ super + shift+{1-9,0}
     i3-msg move container to workspace number {1-9,10}
 
 super + Return
-    alacritty
+    ~/Scripts/i3-shell 
 
 super + q
     i3-msg kill

@@ -7,5 +7,4 @@ else
 	i3-msg split h &> /dev/null
 fi
 
-alacritty &> /dev/null &
-disown
+~/Scripts/i3-shell
