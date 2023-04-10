@@ -1,3 +1,5 @@
 [user]
 	email = jventura@fi.uba.ar
 	name = Julian Ventura
+[core]
+	editor = nvim
