@@ -120,6 +120,8 @@ source $ZSH/oh-my-zsh.sh
 
 alias v=nvim
 
+# Fonts
+source /usr/local/share/fonts/*.sh
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"

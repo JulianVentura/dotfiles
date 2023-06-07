@@ -13,7 +13,7 @@ import:
 ## Set environment variables
 env:
   TERM: alacritty
-  WINIT_X11_SCALE_FACTOR: '1.0'
+  WINIT_X11_SCALE_FACTOR: "1.0"
 
 ## Terminal window settings
 window:
@@ -22,18 +22,18 @@ window:
     lines: 24
 
   padding:
-    x: 14
-    y: 14
+    x: 0
+    y: 0
 
   decorations: none
-  startup_mode: Windowed
+  startup_mode: Maximized
   dynamic_title: true
 
-## scrolling
+  ## scrolling
   history: 10000
   multiplier: 3
 
-## Background opacity
+  ## Background opacity
   opacity: 1.0
 
 ## Cursor
@@ -52,3 +52,5 @@ shell:
   program: /bin/zsh
   args:
     - --login
+key_bindings:
+  - { key: F11, action: ToggleFullScreen }
