@@ -23,8 +23,8 @@ DialogWidth=1920
 
 [Containments][28][General]
 ToolBoxButtonState=topcenter
-ToolBoxButtonX=444
-ToolBoxButtonY=23
+ToolBoxButtonX=455
+ToolBoxButtonY=24
 
 [Containments][28][Wallpaper][org.kde.image][General]
 Image=/home/julian/dotfiles/common/Wallpapers/astronaut.jpg
@@ -177,9 +177,9 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][53][Applets][55][Configuration]
-PreloadWeight=95
-popupHeight=450
-popupWidth=396
+PreloadWeight=100
+popupHeight=600
+popupWidth=528
 
 [Containments][53][Applets][55][Configuration][Appearance]
 dateDisplayFormat=BesideTime
@@ -189,8 +189,8 @@ fontSize=16
 fontStyleName=Regular
 
 [Containments][53][Applets][55][Configuration][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
+DialogHeight=1013
+DialogWidth=1920
 
 [Containments][53][Applets][56]
 immutability=1
@@ -225,11 +225,11 @@ immutability=1
 plugin=org.kde.plasma.showdesktop
 
 [Containments][53][ConfigDialog]
-DialogHeight=84
+DialogHeight=100
 DialogWidth=1920
 
 [Containments][53][General]
-AppletOrder=56;57;55;58;59;79
+AppletOrder=56;58;55;57;59;79
 
 [Containments][60]
 activityId=
@@ -255,7 +255,7 @@ immutability=1
 plugin=org.kde.plasma.clipboard
 
 [Containments][60][Applets][63][Configuration]
-PreloadWeight=55
+PreloadWeight=65
 
 [Containments][60][Applets][64]
 immutability=1
@@ -290,7 +290,7 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][60][Applets][71][Configuration]
-PreloadWeight=55
+PreloadWeight=65
 
 [Containments][60][Applets][71][Configuration][General]
 migrated=true
@@ -316,6 +316,9 @@ PreloadWeight=26
 [Containments][60][Applets][75]
 immutability=1
 plugin=org.kde.plasma.networkmanagement
+
+[Containments][60][Applets][75][Configuration]
+PreloadWeight=70
 
 [Containments][60][Applets][81]
 immutability=1

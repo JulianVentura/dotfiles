@@ -27,7 +27,7 @@ Toggle Touchpad=Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku,Touchpad Toggle\tMeta
 _k_friendly_name=Touchpad
 
 [kded5]
-Show System Activity=Ctrl+Esc,Ctrl+Esc,Show System Activity
+Show System Activity=Ctrl+Shift+Esc,Ctrl+Esc,Show System Activity
 _k_friendly_name=KDE Daemon
 display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
@@ -210,10 +210,6 @@ view_actual_size=Meta+0,Meta+0,Zoom to Actual Size
 view_zoom_in=Meta++\tMeta+=,Meta++,Zoom In
 view_zoom_out=Meta+-,Meta+-,Zoom Out
 
-[ls.desktop]
-_k_friendly_name=ls
-_launch=Meta+[\tMeta+]\tMeta+J,none,ls
-
 [mediacontrol]
 _k_friendly_name=Media Controller
 mediavolumedown=none,none,Media volume down
@@ -249,14 +245,14 @@ _k_friendly_name=Emoji Selector
 _launch=Meta+.\tMeta+Ctrl+Alt+Shift+Space,Meta+.\tMeta+Ctrl+Alt+Shift+Space,Emoji Selector
 
 [org.kde.spectacle.desktop]
-ActiveWindowScreenShot=Meta+Print,Meta+Print,Capture Active Window
+ActiveWindowScreenShot=none,Meta+Print,Capture Active Window
 CurrentMonitorScreenShot=none,none,Capture Current Monitor
 FullScreenScreenShot=Shift+Print,Shift+Print,Capture Entire Desktop
-OpenWithoutScreenshot=none,none,Launch without taking a screenshot
-RectangularRegionScreenShot=Meta+Shift+Print,Meta+Shift+Print,Capture Rectangular Region
+OpenWithoutScreenshot=none,none,Launch Spectacle without capturing
+RectangularRegionScreenShot=Meta+Print,Meta+Shift+Print,Capture Rectangular Region
 WindowUnderCursorScreenShot=Meta+Ctrl+Print,Meta+Ctrl+Print,Capture Window Under Cursor
 _k_friendly_name=Spectacle
-_launch=Print,Print,Spectacle
+_launch=Print,Print,Launch Spectacle
 
 [org_kde_powerdevil]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Decrease Keyboard Brightness
@@ -272,7 +268,7 @@ Turn Off Screen=none,none,Turn Off Screen
 _k_friendly_name=Power Management
 
 [plasmashell]
-_k_friendly_name=Plasma
+_k_friendly_name=Activity switching
 activate task manager entry 1=none,Meta+1,Activate Task Manager Entry 1
 activate task manager entry 10=none,Meta+0,Activate Task Manager Entry 10
 activate task manager entry 2=none,Meta+2,Activate Task Manager Entry 2
