@@ -233,7 +233,6 @@ lynk ~/dotfiles/fedora/kglobalshortcutsrc ~/.config
 lynk ~/dotfiles/fedora/plasma-org.kde.plasma.desktop-appletsrc ~/.config
 lynk ~/dotfiles/fedora/fontconfig ~/.config
 lynk ~/dotfiles/fedora/gtkrc ~/.config
-lynk ~/dotfiles/fedora/kalendaracrc ~/.config
 lynk ~/dotfiles/fedora/kcminputrc ~/.config
 lynk ~/dotfiles/fedora/kded5rc ~/.config
 lynk ~/dotfiles/fedora/kde.org ~/.config
