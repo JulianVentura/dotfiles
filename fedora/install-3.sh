@@ -73,8 +73,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ## Add flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# Install Postman
-flatpak install -y flathub com.getpostman.Postman
+# Install Postman with retry logic as it uses to timeout
+for i in 1 2 3; do flatpak install -y flathub com.getpostman.Postman && break || sleep 1; done
 
 #docker
 sudo systemctl start docker.service
@@ -83,7 +83,10 @@ sudo usermod -aG docker $USER
 
 log "Installing Oh My Zsh (zsh)"
 
-bash -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+#This will execute ohmizsh install.sh script and answer with "No" in its prompt
+curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -o /tmp/install.sh &&
+sed -i 's/CHSH=no/CHSH=yes/g' /tmp/install.sh &&
+echo "N" | sh /tmp/install.sh 
 
 log "Installing Powerlevel10k (zsh)"
 
@@ -100,6 +103,8 @@ log "Installing nvm"
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
+# Source .bashrc to reload config and use nvm
+source ~/.bashrc
 
 log "Installing latest Node LTS"
 
