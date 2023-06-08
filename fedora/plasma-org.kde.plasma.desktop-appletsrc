@@ -6,30 +6,6 @@ wheel:Vertical;NoModifier=org.kde.switchdesktop
 [ActionPlugins][1]
 RightButton;NoModifier=org.kde.contextmenu
 
-[Containments][28]
-ItemGeometries-1920x1080=
-ItemGeometriesHorizontal=
-activityId=1c2de092-05cb-484e-b00b-bd99ebddfce9
-formfactor=0
-immutability=1
-lastScreen=0
-location=0
-plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
-
-[Containments][28][ConfigDialog]
-DialogHeight=1028
-DialogWidth=1920
-
-[Containments][28][General]
-ToolBoxButtonState=topcenter
-ToolBoxButtonX=455
-ToolBoxButtonY=24
-
-[Containments][28][Wallpaper][org.kde.image][General]
-Image=/home/julian/dotfiles/common/Wallpapers/astronaut.jpg
-SlidePaths=/usr/share/wallpapers/
-
 [Containments][35]
 activityId=
 formfactor=2
@@ -226,7 +202,7 @@ plugin=org.kde.plasma.showdesktop
 
 [Containments][53][ConfigDialog]
 DialogHeight=100
-DialogWidth=1920
+DialogWidth=1536
 
 [Containments][53][General]
 AppletOrder=56;58;55;57;59;79
@@ -299,19 +275,22 @@ migrated=true
 immutability=1
 plugin=org.kde.plasma.nightcolorcontrol
 
+[Containments][60][Applets][72][Configuration]
+PreloadWeight=34
+
 [Containments][60][Applets][73]
 immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][60][Applets][73][Configuration]
-PreloadWeight=44
+PreloadWeight=28
 
 [Containments][60][Applets][74]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][60][Applets][74][Configuration]
-PreloadWeight=26
+PreloadWeight=10
 
 [Containments][60][Applets][75]
 immutability=1
@@ -330,6 +309,32 @@ PreloadWeight=42
 [Containments][60][General]
 extraItems=org.kde.kdeconnect,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.bluetooth,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.nightcolorcontrol,org.kde.plasma.notifications,org.kde.plasma.printmanager,org.kde.plasma.vault,org.kde.plasma.volume
 knownItems=org.kde.kdeconnect,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.bluetooth,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.nightcolorcontrol,org.kde.plasma.notifications,org.kde.plasma.printmanager,org.kde.plasma.vault,org.kde.plasma.volume
+
+[Containments][8][Applets][23][Configuration]
+PreloadWeight=34
+
+[Containments][8][Applets][24][Configuration]
+PreloadWeight=34
+
+[Containments][80]
+ItemGeometries-1536x864=
+ItemGeometries-1920x1080=
+ItemGeometriesHorizontal=
+activityId=2e28bce9-a76c-4809-b130-a278a59f04ad
+formfactor=0
+immutability=1
+lastScreen=0
+location=0
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
+
+[Containments][80][General]
+ToolBoxButtonState=topcenter
+ToolBoxButtonX=475
+ToolBoxButtonY=24
+
+[Containments][80][Wallpaper][org.kde.image][General]
+Image=/home/julian/dotfiles/common/Wallpapers/astronaut.jpg
 
 [ScreenMapping]
 itemsOnDisabledScreens=
