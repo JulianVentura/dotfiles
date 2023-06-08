@@ -1,6 +1,14 @@
 #!/bin/bash
 
-#### Get the UUID of your btrfs system root.
+input () {
+    Green=$'\e[1;32m' 
+    Reset=$'\e[0m'
+    read -p "${Green}$@ (y/n): ${Reset}" -n 1 -r
+    echo
+    echo
+}
+
+##### Get the UUID of your btrfs system root.
 ROOT_UUID="$(sudo grub2-probe --target=fs_uuid /)"
 
 #### Get the btrfs subvolume mount options from your fstab.
@@ -58,7 +66,7 @@ for dir in "${SUBVOLUMES[@]}" ; do
 done
 
 # Install snapper
-sudo dnf5 install -y snapper python3-dnf-plugin-snapper
+sudo dnf install -y snapper python3-dnf-plugin-snapper
 
 # Create snapper subvolumes configuration
 sudo snapper -c root create-config /
@@ -129,6 +137,10 @@ sudo btrfs subvolume snapshot / /.snapshots/1/snapshot
 SNAP_ID="$(sudo btrfs inspect-internal rootid /.snapshots/1/snapshot)"
 sudo btrfs subvolume set-default ${SNAP_ID} / 
 
-# Reboot system
-sudo reboot
+input "Reboot now?"
+
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+   sudo reboot
+fi
 

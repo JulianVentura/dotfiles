@@ -1,5 +1,13 @@
 #!/bin/bash
 
+input () {
+    Green=$'\e[1;32m' 
+    Reset=$'\e[0m'
+    read -p "${Green}$@ (y/n): ${Reset}" -n 1 -r
+    echo
+    echo
+}
+
 #Eliminate grub2 write error on boot
 sudo grub2-editenv - unset menu_auto_hide
 
@@ -23,8 +31,14 @@ sudo dnf makecache
 #sudo ln -sf /bin/dnf5 /bin/dnf
 
 #Install dependencies
-sudo dnf install -y nvim inotify-tools make git
+sudo dnf install -y neovim inotify-tools make git
 
 # Update system and reboot
 sudo dnf update
-sudo reboot
+
+input "Reboot now?"
+
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+   sudo reboot
+fi

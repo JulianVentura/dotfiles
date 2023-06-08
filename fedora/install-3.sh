@@ -88,6 +88,9 @@ curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -
 sed -i 's/CHSH=no/CHSH=yes/g' /tmp/install.sh &&
 echo "N" | sh /tmp/install.sh 
 
+#Change default shell to zsh
+chsh -s /usr/bin/zsh
+
 log "Installing Powerlevel10k (zsh)"
 
 sudo dnf install -y powerline powerline-fonts
@@ -195,23 +198,51 @@ git clone https://github.com/JulianVentura/dotfiles.git ~/dotfiles
 
 log "Creating symlinks"
 
-sudo ln -sf ~/dotfiles/fedora/dnf.conf /etc/
-sudo ln -sf ~/dotfiles/common/Wallpapers ~/
-sudo ln -sf ~/dotfiles/common/.gitconfig ~/
-sudo ln -sf ~/dotfiles/common/.p10k.zsh ~/
-sudo ln -sf ~/dotfiles/common/.zshrc ~/
-sudo ln -sf ~/dotfiles/common/alacritty ~/.config/
-sudo ln -sf ~/dotfiles/common/nvim ~/.config/
-sudo ln -sf ~/dotfiles/common/.tmux.conf ~/
-sudo ln -sf ~/dotfiles/common/pypoetry ~/.config
-sudo ln -sf ~/dotfiles/fedora/dconf ~/.config
-sudo ln -sf ~/dotfiles/fedora/gtk-3.0 ~/.config
-sudo ln -sf ~/dotfiles/fedora/gtk-4.0 ~/.config
-sudo ln -sf ~/dotfiles/fedora/gtkrc-2.0 ~/.config
-sudo ln -sf ~/dotfiles/fedora/kcmfonts ~/.config
-sudo ln -sf ~/dotfiles/fedora/kdeglobals ~/.config
-sudo ln -sf ~/dotfiles/fedora/kglobalshortcutsrc ~/.config
-sudo ln -sf ~/dotfiles/fedora/plasma-org.kde.plasma.desktop-appletsrc ~/.config
+lynk () {
+  #This function will ensure that the destiniy file or directory not exists (deleting it)
+  #and then it will create a symbolik lynk to it
+  file_path=$1
+  lynk_directory=$2
+  file_name=$(basename $file_path)
+  lynk_path="$lynk_directory/$file_name"
+  if [[ -d $lynk_path ]]; then
+    sudo rm -rf $lynk_path
+  elif [[ -L $lynk_path ]]; then
+    sudo rm $lynk_path
+  fi
+
+  sudo ln -sf $file_path $lynk_directory 
+}
+
+lynk ~/dotfiles/fedora/dnf.conf /etc/
+lynk ~/dotfiles/common/Wallpapers ~/
+lynk ~/dotfiles/common/.gitconfig ~/
+lynk ~/dotfiles/common/.p10k.zsh ~/
+lynk ~/dotfiles/common/.zshrc ~/
+lynk ~/dotfiles/common/alacritty ~/.config/
+lynk ~/dotfiles/common/nvim ~/.config/
+lynk ~/dotfiles/common/.tmux.conf ~/
+lynk ~/dotfiles/common/pypoetry ~/.config
+lynk ~/dotfiles/fedora/dconf ~/.config
+lynk ~/dotfiles/fedora/gtk-3.0 ~/.config
+lynk ~/dotfiles/fedora/gtk-4.0 ~/.config
+lynk ~/dotfiles/fedora/gtkrc-2.0 ~/.config
+lynk ~/dotfiles/fedora/kcmfonts ~/.config
+lynk ~/dotfiles/fedora/kdeglobals ~/.config
+lynk ~/dotfiles/fedora/kglobalshortcutsrc ~/.config
+lynk ~/dotfiles/fedora/plasma-org.kde.plasma.desktop-appletsrc ~/.config
+lynk ~/dotfiles/fedora/fontconfig ~/.config
+lynk ~/dotfiles/fedora/gtkrc ~/.config
+lynk ~/dotfiles/fedora/kalendaracrc ~/.config
+lynk ~/dotfiles/fedora/kcminputrc ~/.config
+lynk ~/dotfiles/fedora/kded5rc ~/.config
+lynk ~/dotfiles/fedora/kde.org ~/.config
+lynk ~/dotfiles/fedora/krunnerrc ~/.config
+lynk ~/dotfiles/fedora/kwinrc ~/.config
+lynk ~/dotfiles/fedora/plasmashellrc ~/.config
+lynk ~/dotfiles/fedora/session ~/.config
+lynk ~/dotfiles/fedora/systemsettingsrc ~/.config
+lynk ~/dotfiles/fedora/xsettingsd ~/.config
 
 log "Installation finished, reboot needed."
 input "Reboot now?"
