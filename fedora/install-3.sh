@@ -61,11 +61,11 @@ packages=(
  docker
  docker-compose
  tmux
+ discord
 )
 
 
 sudo dnf install -y ${packages[@]}
-
 
 log "Installing tmux plugins"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
