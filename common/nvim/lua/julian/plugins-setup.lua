@@ -84,6 +84,14 @@ return packer.startup(function(use)
   -- formatting & linting
   use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
   use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+  -- use({
+  --   "rust-lang/rust.vim",
+  --   ft = "rust",
+  --   init = function()
+  --     print("Hello")
+  --     vim.g.rustfmt_autosave = 1
+  --   end,
+  -- }) -- formatter for rust
 
   -- treesitter configuration
   use({
@@ -100,6 +108,9 @@ return packer.startup(function(use)
 
   -- git integration
   use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+
+  -- tmux and nvim navigation
+  use({ "alexghergh/nvim-tmux-navigation" })
 
   if packer_bootstrap then
     require("packer").sync()

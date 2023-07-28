@@ -16,6 +16,9 @@ if not typescript_setup then
   return
 end
 
+-- lsp utils
+local util = require("lspconfig/util")
+
 local keymap = vim.keymap -- for conciseness
 
 -- enable keybinds only for when lsp server available
@@ -124,6 +127,21 @@ lspconfig["pyright"].setup({
           reportOptionalSubscript = "none",
           reportPrivateImportUsage = "none",
         },
+      },
+    },
+  },
+})
+
+-- configure rust language server
+lspconfig["rust_analyzer"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "rust" },
+  root_dir = util.root_pattern("Cargo.toml"),
+  settings = {
+    ["rust_analyzer"] = {
+      cargo = {
+        allFeatures = true,
       },
     },
   },

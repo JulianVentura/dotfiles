@@ -49,3 +49,13 @@ null_ls.setup({
     end
   end,
 })
+
+-- Configure Rust formating
+local rust_format_group = vim.api.nvim_create_augroup("RustFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.rs",
+  callback = function()
+    vim.lsp.buf.format({ async = true })
+  end,
+  group = rust_format_group,
+})
