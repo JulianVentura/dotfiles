@@ -132,6 +132,10 @@ eval "$(pyenv init -)"
 
 export PATH="$PATH:/$HOME/.local/bin"
 
+# cargo plugins
+
+export PATH="$PATH:/$HOME/.cargo/bin"
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

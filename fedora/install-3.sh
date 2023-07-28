@@ -121,6 +121,9 @@ log "Installing poetry"
 
 curl -sSL https://install.python-poetry.org | python3 -
 
+log "Installing Rust"
+
+curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 log "Installing Fonts"
 
