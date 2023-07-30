@@ -177,6 +177,8 @@ cd -
 log "Installing KWin Plugins"
 
 plugins_directory="/usr/share/kwin/manual"
+temp_directory="/tmp"
+
 if [[ ! -d "$plugins_directory" ]]; then
   sudo mkdir -p "$plugins_directory"
 fi
@@ -186,6 +188,13 @@ cd "${plugins_directory}/dynamic_workspaces"
 plasmapkg2 --type kwinscript -i .
 
 cd - 
+
+#Tiling window manager
+git clone https://github.com/zeroxoneafour/polonium.git "${temp_directory}/polonium"
+cd "${temp_directory}/polonium"
+make
+cd -
+sudo mv "${temp_directory}/polonium" "${plugins_directory}"
 
 #input "Is this a ThinkPad?"
 #
