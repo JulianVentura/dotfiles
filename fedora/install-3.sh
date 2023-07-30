@@ -229,22 +229,23 @@ lynk ~/dotfiles/common/pypoetry ~/.config
 lynk ~/dotfiles/fedora/dconf ~/.config
 lynk ~/dotfiles/fedora/gtk-3.0 ~/.config
 lynk ~/dotfiles/fedora/gtk-4.0 ~/.config
+lynk ~/dotfiles/fedora/gtkrc ~/.config
 lynk ~/dotfiles/fedora/gtkrc-2.0 ~/.config
 lynk ~/dotfiles/fedora/kcmfonts ~/.config
 lynk ~/dotfiles/fedora/kdeglobals ~/.config
 lynk ~/dotfiles/fedora/kglobalshortcutsrc ~/.config
 lynk ~/dotfiles/fedora/plasma-org.kde.plasma.desktop-appletsrc ~/.config
 lynk ~/dotfiles/fedora/fontconfig ~/.config
-lynk ~/dotfiles/fedora/gtkrc ~/.config
 lynk ~/dotfiles/fedora/kcminputrc ~/.config
 lynk ~/dotfiles/fedora/kded5rc ~/.config
-lynk ~/dotfiles/fedora/kde.org ~/.config
 lynk ~/dotfiles/fedora/krunnerrc ~/.config
 lynk ~/dotfiles/fedora/kwinrc ~/.config
-lynk ~/dotfiles/fedora/plasmashellrc ~/.config
-lynk ~/dotfiles/fedora/session ~/.config
 lynk ~/dotfiles/fedora/systemsettingsrc ~/.config
 lynk ~/dotfiles/fedora/xsettingsd ~/.config
+
+# Add file filters to git ignore
+cd ~/dotfiles
+~/dotfiles/common/git-config-setup.sh
 
 log "Installation finished, reboot needed."
 input "Reboot now?"

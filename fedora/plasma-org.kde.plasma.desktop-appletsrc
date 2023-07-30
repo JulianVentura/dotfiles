@@ -130,7 +130,7 @@ immutability=1
 plugin=org.kde.plasma.mediacontroller
 
 [Containments][35][Applets][53][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][35][Configuration]
 PreloadWeight=42
@@ -231,11 +231,14 @@ immutability=1
 plugin=org.kde.plasma.clipboard
 
 [Containments][60][Applets][63][Configuration]
-PreloadWeight=65
+PreloadWeight=85
 
 [Containments][60][Applets][64]
 immutability=1
 plugin=org.kde.plasma.devicenotifier
+
+[Containments][60][Applets][64][Configuration]
+PreloadWeight=65
 
 [Containments][60][Applets][65]
 immutability=1
@@ -252,6 +255,9 @@ plugin=org.kde.plasma.manage-inputmethod
 [Containments][60][Applets][68]
 immutability=1
 plugin=org.kde.plasma.notifications
+
+[Containments][60][Applets][68][Configuration]
+PreloadWeight=70
 
 [Containments][60][Applets][69]
 immutability=1
@@ -283,28 +289,31 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][60][Applets][73][Configuration]
-PreloadWeight=28
+PreloadWeight=0
+
+[Containments][60][Applets][73][Configuration][General]
+showPercentage=true
 
 [Containments][60][Applets][74]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][60][Applets][74][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][60][Applets][75]
 immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][60][Applets][75][Configuration]
-PreloadWeight=70
+PreloadWeight=100
 
 [Containments][60][Applets][81]
 immutability=1
 plugin=org.kde.plasma.mediacontroller
 
 [Containments][60][Applets][81][Configuration]
-PreloadWeight=42
+PreloadWeight=0
 
 [Containments][60][General]
 extraItems=org.kde.kdeconnect,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.bluetooth,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.nightcolorcontrol,org.kde.plasma.notifications,org.kde.plasma.printmanager,org.kde.plasma.vault,org.kde.plasma.volume
@@ -338,3 +347,4 @@ Image=/home/julian/dotfiles/common/Wallpapers/astronaut.jpg
 
 [ScreenMapping]
 itemsOnDisabledScreens=
+screenMapping=
