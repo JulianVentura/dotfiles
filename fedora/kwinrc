@@ -1,12 +1,22 @@
+[Desktops]
+Id_1=87411cb4-ddf8-4125-bb00-3960bd7fee6b
+Id_2=e3cbb8e5-70bc-4b26-ae9d-a3c1b0e802a5
+Id_3=dca1e913-c4cb-4de8-bed8-8cfba0e2e04e
+Number=3
+Rows=1
+
 [MouseBindings]
 CommandAll2=Nothing
 CommandAll3=Nothing
+
+[Plugins]
+poloniumEnabled=true
 
 [Tiling]
 padding=4
 
 [Tiling][3c373409-48e0-57e9-a1a9-eb32e49f8772]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+tiles={"layoutDirection":"horizontal","tiles":[]}
 
 [Xwayland]
 Scale=1

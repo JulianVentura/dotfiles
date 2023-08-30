@@ -1,5 +1,4 @@
 [ActionPlugins][0]
-MiddleButton;NoModifier=org.kde.paste
 RightButton;NoModifier=org.kde.contextmenu
 wheel:Vertical;NoModifier=org.kde.switchdesktop
 
@@ -202,7 +201,7 @@ plugin=org.kde.plasma.showdesktop
 
 [Containments][53][ConfigDialog]
 DialogHeight=100
-DialogWidth=1536
+DialogWidth=1920
 
 [Containments][53][General]
 AppletOrder=56;58;55;57;59;79
@@ -282,7 +281,7 @@ immutability=1
 plugin=org.kde.plasma.nightcolorcontrol
 
 [Containments][60][Applets][72][Configuration]
-PreloadWeight=34
+PreloadWeight=18
 
 [Containments][60][Applets][73]
 immutability=1
@@ -339,7 +338,7 @@ wallpaperplugin=org.kde.image
 
 [Containments][80][General]
 ToolBoxButtonState=topcenter
-ToolBoxButtonX=475
+ToolBoxButtonX=455
 ToolBoxButtonY=24
 
 [Containments][80][Wallpaper][org.kde.image][General]
