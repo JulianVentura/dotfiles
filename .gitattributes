@@ -1,1 +1,7 @@
-fedora/* filter=clean
+fedora/gtkrc filter=clean_gtkrc
+fedora/gtkrc-2.0 filter=clean_gtkrc-2.0
+fedora/kded5rc filter=clean_kded5rc
+fedora/kglobalshortcutsrc filter=clean_kglobal
+fedora/kwinrc filter=clean_kwinrc
+fedora/plasma-org.kde.plasma.desktop-appletsrc filter=clean_appletsrc
+
