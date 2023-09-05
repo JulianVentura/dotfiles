@@ -61,7 +61,6 @@ packages=(
  docker
  docker-compose
  tmux
- discord
 )
 
 
@@ -75,6 +74,9 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 # Install Postman with retry logic as it uses to timeout
 for i in 1 2 3; do flatpak install -y flathub com.getpostman.Postman && break || sleep 1; done
+
+# Install Discord
+for i in 1 2 3; do flatpak install -y flathub com.discordapp.Discord && break || sleep 1; done
 
 #docker
 sudo systemctl start docker.service
