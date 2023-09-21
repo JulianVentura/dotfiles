@@ -66,6 +66,10 @@ packages=(
 
 sudo dnf install -y ${packages[@]}
 
+log "Installing codecs"
+sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+sudo dnf install -y lame\* --exclude=lame-devel
+
 log "Installing tmux plugins"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
