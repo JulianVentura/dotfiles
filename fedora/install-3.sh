@@ -257,6 +257,8 @@ lynk ~/dotfiles/fedora/krunnerrc ~/.config
 lynk ~/dotfiles/fedora/kwinrc ~/.config
 lynk ~/dotfiles/fedora/systemsettingsrc ~/.config
 lynk ~/dotfiles/fedora/xsettingsd ~/.config
+lynk ~/dotfiles/common/.cargo/env ~/.cargo/env
+lynk ~/dotfiles/common/.profiles ~/.profile
 
 # Add file filters to git ignore
 cd ~/dotfiles
