@@ -1,0 +1,37 @@
+import = ["/home/julian/.config/alacritty/colors.toml", "/home/julian/.config/alacritty/fonts.toml"]
+live_config_reload = true
+
+[cursor]
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[env]
+TERM = "alacritty"
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+[[keyboard.bindings]]
+action = "ToggleFullScreen"
+key = "F11"
+
+[shell]
+args = ["--login"]
+program = "/bin/zsh"
+
+[window]
+decorations = "none"
+dynamic_title = true
+history = 10000
+multiplier = 3
+opacity = 1.0
+startup_mode = "Maximized"
+
+[window.dimensions]
+columns = 82
+lines = 24
+
+[window.padding]
+x = 0
+y = 0
