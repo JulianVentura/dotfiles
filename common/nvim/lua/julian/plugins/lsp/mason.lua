@@ -30,6 +30,8 @@ mason_lspconfig.setup({
     "emmet_ls",
     "pyright", -- python
     "rust_analyzer",
+    "clangd",
+    "opencl_ls",
   },
   -- auto-install configured servers (with lspconfig)
   automatic_installation = true, -- not the same as ensure_installed
@@ -44,6 +46,7 @@ mason_null_ls.setup({
     "black", -- python formatter
     "flake8", -- python linter
     "isort", -- python import sorter
+    "clang-format", --clang formatter
   },
   -- auto-install configured formatters & linters (with null-ls)
   automatic_installation = true,

@@ -146,3 +146,17 @@ lspconfig["rust_analyzer"].setup({
     },
   },
 })
+
+-- configure clang
+lspconfig["clangd"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+})
+
+-- configure opencl
+lspconfig["opencl_ls"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "cl", "ocl", "opencl" },
+})
