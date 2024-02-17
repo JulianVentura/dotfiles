@@ -125,4 +125,7 @@ return packer.startup(function(use)
   if packer_bootstrap then
     require("packer").sync()
   end
+
+  -- GitHub copilot
+  use({ "github/copilot.vim" })
 end)
