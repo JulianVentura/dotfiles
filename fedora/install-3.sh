@@ -58,6 +58,8 @@ packages=(
  neofetch
  ripgrep
  fzf
+ bat
+ fd-find
  docker
  docker-compose
  tmux
@@ -81,6 +83,9 @@ for i in 1 2 3; do flatpak install -y flathub com.getpostman.Postman && break ||
 
 # Install Discord
 for i in 1 2 3; do flatpak install -y flathub com.discordapp.Discord && break || sleep 1; done
+
+# Install Typora
+for i in 1 2 3; do flatpak install flathub io.typora.Typora && break || sleep 1; done
 
 #docker
 sudo systemctl start docker.service
@@ -120,6 +125,10 @@ log "Installing latest Node LTS"
 nvm install --lts
 
 log "Installing pyenv"
+
+
+# Install npm global packages
+# npm install -g tldr
 
 curl https://pyenv.run | bash
 
