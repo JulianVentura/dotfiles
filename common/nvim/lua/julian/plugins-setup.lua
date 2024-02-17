@@ -34,15 +34,24 @@ return packer.startup(function(use)
 
   use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
-  use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
+  -- Themes & colorschemes
+  -- Nightfly
+  use("bluz71/vim-nightfly-guicolors")
 
+  -- Gruvbox
+  use("ellisonleao/gruvbox.nvim")
+
+  -- VSCode
+  use("Mofiqul/vscode.nvim")
+
+  ------------------------------------
   use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
-  use("szw/vim-maximizer") -- maximizes and restores current window
+  -- use("szw/vim-maximizer") -- maximizes and restores current window
 
   -- essential plugins
   use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
-  use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
+  -- use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
 
   -- commenting with gc
   use("numToStr/Comment.nvim")
