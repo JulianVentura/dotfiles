@@ -21,21 +21,23 @@ require("luasnip/loaders/from_vscode").lazy_load()
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
+local mappings = {
+  ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+  ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+  ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+  ["<C-f>"] = cmp.mapping.scroll_docs(4),
+  ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+  ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+  ["<CR>"] = cmp.mapping.confirm({ select = false }),
+}
+
 cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = cmp.mapping.preset.insert({
-    ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-    ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
-    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-    ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-    ["<CR>"] = cmp.mapping.confirm({ select = false }),
-  }),
+  mapping = cmp.mapping.preset.insert(mappings),
   -- sources for autocompletion
   sources = cmp.config.sources({
     { name = "nvim_lsp" }, -- lsp
@@ -50,4 +52,27 @@ cmp.setup({
       ellipsis_char = "...",
     }),
   },
+})
+
+-- `/` cmdline setup.
+cmp.setup.cmdline("/", {
+  mapping = cmp.mapping.preset.insert(mappings),
+  sources = {
+    { name = "buffer" },
+  },
+})
+
+-- `:` cmdline setup.
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.insert(mappings),
+  sources = cmp.config.sources({
+    { name = "path" },
+  }, {
+    {
+      name = "cmdline",
+      option = {
+        ignore_cmds = { "Man", "!" },
+      },
+    },
+  }),
 })
