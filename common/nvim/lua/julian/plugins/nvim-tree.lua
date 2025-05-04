@@ -1,6 +1,7 @@
 -- import nvim-tree plugin safely
 local setup, nvimtree = pcall(require, "nvim-tree")
 if not setup then
+  print("ERROR: nvim-tree plugin not found")
   return
 end
 
@@ -18,8 +19,8 @@ nvimtree.setup({
     icons = {
       glyphs = {
         folder = {
-          arrow_closed = "", -- arrow when folder is closed
-          arrow_open = "", -- arrow when folder is open
+          arrow_closed = "", -- arrow when folder is closed
+          arrow_open = "", -- arrow when folder is open
         },
       },
     },

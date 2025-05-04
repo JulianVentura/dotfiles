@@ -18,7 +18,7 @@ local nightfly = function()
   -- Lua initialization file
   vim.g.nightflyTerminalColors = true
   -- Lua initialization file
-  vim.g.nightflyTransparent = false
+  vim.g.nightflyTransparent = true
   -- Lua initialization file
   vim.g.nightflyUndercurls = true
   -- Lua initialization file
@@ -61,8 +61,30 @@ local gruvbox = function()
     palette_overrides = {},
     overrides = {},
     dim_inactive = false,
-    transparent_mode = false,
+    transparent_mode = true,
   })
+
+  function FixGruvbox()
+    -- vim.api.nvim_set_hl(0, 'DiffviewDiffAddAsDelete', { bg = "#431313" })
+    -- vim.api.nvim_set_hl(0, 'DiffDelete', { bg = "none", fg = "#504945" })
+    -- vim.api.nvim_set_hl(0, 'DiffviewDiffDelete', { bg = "none", fg = "#504945" })
+    -- vim.api.nvim_set_hl(0, 'DiffAdd', { bg = "#142a03" })
+    -- vim.api.nvim_set_hl(0, 'DiffChange', { bg = "#3B3307" })
+
+    vim.api.nvim_set_hl(0, 'DiffviewDiffAddAsDelete', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'DiffDelete', { bg = "none", fg = "none" })
+    vim.api.nvim_set_hl(0, 'DiffviewDiffDelete', { bg = "none", fg = "none" })
+    vim.api.nvim_set_hl(0, 'DiffAdd', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'DiffChange', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'DiffText', { bg = "#4D520D" })
+  end
+  FixGruvbox()
+
+  vim.api.nvim_create_autocmd(
+    "ColorScheme",
+      { pattern = { "gruvbox" }, callback = FixGruvbox }
+  )
+
 
   return true
 end
@@ -116,12 +138,14 @@ local function vscode()
   return true
 end
 
+
+local themes = {
+  gruvbox = gruvbox,
+  nightfly = nightfly,
+  vscode = vscode,
+}
+
 local function configure_theme(theme)
-  local themes = {
-    gruvbox = gruvbox,
-    nightfly = nightfly,
-    vscode = vscode,
-  }
 
   if not themes[theme] then
     print("Error: Theme " .. theme .. " not available")
@@ -142,5 +166,20 @@ local function configure_theme(theme)
 end
 
 configure_theme(Theme)
+
+vim.api.nvim_create_user_command("Theme", function(opts)
+  configure_theme(opts.args)
+end, { nargs=1, complete=function()
+    local keys = {}
+    for key, _ in pairs(themes) do
+      table.insert(keys, key)
+    end
+    return keys
+end})
+
+vim.api.nvim_create_user_command("SolveMerge", function(_)
+  vim.cmd("Theme vscode")
+  vim.cmd("DiffviewOpen")
+end, {})
 
 return Theme

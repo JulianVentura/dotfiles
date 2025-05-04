@@ -1,20 +1,23 @@
 -- import lspconfig plugin safely
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
+  print("ERROR: lspconfig plugin not found")
   return
 end
 
 -- import cmp-nvim-lsp plugin safely
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status then
+  print("ERROR: cmp_nvim_lsp plugin not found")
   return
 end
 
 -- import typescript plugin safely
-local typescript_setup, typescript = pcall(require, "typescript")
-if not typescript_setup then
-  return
-end
+-- local typescript_setup, typescript = pcall(require, "typescript")
+-- if not typescript_setup then
+--   print("ERROR: typescript plugin not found")
+--   return
+-- end
 
 -- lsp utils
 local util = require("lspconfig/util")
@@ -41,7 +44,7 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
   -- typescript specific keymaps (e.g. rename file and update imports)
-  if client.name == "tsserver" then
+  if client.name == "ts_ls" then
     keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
     keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
     keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
@@ -60,13 +63,13 @@ for type, icon in pairs(signs) do
 end
 
 -- configure html server
-lspconfig["html"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
+-- lspconfig["html"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- })
 
 -- configure typescript server with plugin
-typescript.setup({
+lspconfig["ts_ls"].setup({
   server = {
     capabilities = capabilities,
     on_attach = on_attach,
@@ -74,18 +77,18 @@ typescript.setup({
 })
 
 -- configure css server
-lspconfig["cssls"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
+-- lspconfig["cssls"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- })
 
--- configure tailwindcss server
-lspconfig["tailwindcss"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
+-- -- configure tailwindcss server
+-- lspconfig["tailwindcss"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- })
 
--- configure emmet language server
+-- -- configure emmet language server
 lspconfig["emmet_ls"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
@@ -148,15 +151,31 @@ lspconfig["rust_analyzer"].setup({
 })
 
 -- configure clang
-lspconfig["clangd"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-})
+-- lspconfig["clangd"].setup({
+--  capabilities = capabilities,
+--  on_attach = on_attach,
+--  filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+-- })
 
 -- configure opencl
-lspconfig["opencl_ls"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  filetypes = { "cl", "ocl", "opencl" },
-})
+-- lspconfig["opencl_ls"].setup({
+--  capabilities = capabilities,
+--  on_attach = on_attach,
+--  filetypes = { "cl", "ocl", "opencl" },
+-- })
+
+
+-- configure go language server
+-- lspconfig["gopls"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+--   filetypes = { "go" },
+-- })
+
+
+-- configure go language server
+-- lspconfig["elixirls"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+--   -- filetypes = { "exs", "ex" },
+-- })

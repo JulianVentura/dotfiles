@@ -1,6 +1,7 @@
 -- import nvim-treesitter plugin safely
 local status, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status then
+  print("ERROR: nvim-treesitter.configs not found")
   return
 end
 
@@ -19,14 +20,14 @@ treesitter.setup({
     "json",
     "javascript",
     "typescript",
-    "tsx",
+    -- "tsx",
     "yaml",
-    "html",
-    "css",
+    -- "html",
+    -- "css",
     "markdown",
     "markdown_inline",
-    "svelte",
-    "graphql",
+    -- "svelte",
+    -- "graphql",
     "bash",
     "lua",
     "vim",
@@ -34,6 +35,8 @@ treesitter.setup({
     "gitignore",
     "python",
     "c",
+    "elixir",
+    "rust",
   },
   -- auto install above language parsers
   auto_install = true,

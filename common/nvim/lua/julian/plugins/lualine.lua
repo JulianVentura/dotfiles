@@ -3,6 +3,7 @@ local theme = require("julian.core.colorscheme")
 -- import lualine plugin safely
 local status, lualine = pcall(require, "lualine")
 if not status then
+  print("ERROR: lualine plugin not found")
   return
 end
 

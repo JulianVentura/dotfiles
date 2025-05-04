@@ -88,7 +88,7 @@ return packer.startup(function(use)
   use("neovim/nvim-lspconfig") -- easily configure language servers
   use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
   use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
-  use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
+  -- use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
   -- formatting & linting
@@ -104,13 +104,13 @@ return packer.startup(function(use)
   -- }) -- formatter for rust
 
   -- treesitter configuration
-  use({
-    "nvim-treesitter/nvim-treesitter",
+  use {
+    'nvim-treesitter/nvim-treesitter',
     run = function()
-      local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-      ts_update()
+        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+        ts_update()
     end,
-  })
+  }
 
   -- auto closing
   use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
@@ -127,5 +127,9 @@ return packer.startup(function(use)
   end
 
   -- GitHub copilot
-  use({ "github/copilot.vim" })
+  -- use({ "github/copilot.vim" })
+
+  -- use("tpope/vim-fugitive")
+
+  use("sindrets/diffview.nvim")
 end)
