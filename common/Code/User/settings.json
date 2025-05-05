@@ -1,0 +1,79 @@
+{
+    //Vim plugin configs
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "e"
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ],
+        },
+        {
+            "before": [
+                "leader",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ],
+        },
+        {
+            "before": [
+                "leader",
+                "f",
+                "g"
+            ],
+            "commands": [
+                "workbench.view.search"
+            ],
+        },
+    ],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "leader",
+                "g",
+                "c"
+            ],
+            "commands": [
+                "editor.action.addCommentLine"
+            ]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.highlightedyank.enable": true,
+    //Native VSCode configs
+    "editor.minimap.enabled": false,
+    "files.insertFinalNewline": true,
+    "editor.formatOnSave": true,
+    "editor.lineNumbers": "relative",
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.iconTheme": "Monokai Pro Icons",
+    "rust-analyzer.rustc.source": "discover"
+}
